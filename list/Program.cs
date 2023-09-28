@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-public interface IList<T> : IContainer {
+public interface IList<T> : IContainer<T> {
     public void Add(T item);
     public void Remove(T item);
     public bool Contains(T item);
@@ -26,7 +26,14 @@ public interface IContainer<T> {
         
     }
 
-    public void Add(T item) { }
+    public void Add(T item) {
+        if (Count == capacity)
+        {
+            DoubleCapacity();
+        }
+            A[Count] = item;
+       
+    }
     public void Remove(T item) { }
     public bool Contains(T item) {
         
@@ -40,6 +47,8 @@ public interface IContainer<T> {
         }
     }
     public void RemoveAt(int p) { }
+
+    public void Insert(T item, int p) { }
 
     public void MakeEmpty() { }
     public bool Empty() { 
