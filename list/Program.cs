@@ -28,7 +28,17 @@ public interface IContainer<T> {
 
     public void Add(T item) { }
     public void Remove(T item) { }
-    public bool Contains(T item) { }
+    public bool Contains(T item) {
+        
+    }
+    public void DoubleCapacity() {
+        T[] oldA = A;
+        capacity = capacity * 2;
+        A = new T[capacity];
+        for (int i = 0; i < Count; i++) {
+            A[i] = oldA[i];
+        }
+    }
     public void RemoveAt(int p) { }
 
     public void MakeEmpty() { }
