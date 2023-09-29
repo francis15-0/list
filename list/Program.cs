@@ -32,11 +32,19 @@ public interface IContainer<T> {
             DoubleCapacity();
         }
             A[Count] = item;
+        Count++;
        
     }
     public void Remove(T item) { }
     public bool Contains(T item) {
-        
+        bool state = false;
+        for (int i = 0; i< Count; i++) {
+            if (A[i].Equals(item)) {
+                state = true;
+                return state;
+            }
+        }
+        return state;
     }
     public void DoubleCapacity() {
         T[] oldA = A;
@@ -72,7 +80,11 @@ public interface IContainer<T> {
 
 public static class structure {
     public static void Main() {
-    
 
+        List<string> names = new List<string>();
+        names.Add("Francis");
+        names.Add("Jake");
+        names.print();
+        Console.WriteLine(names.Contains("fred"));
     }
 }
